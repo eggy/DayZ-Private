@@ -66,7 +66,7 @@ if ($cmd eq 'messages') {
 	my $sth = $dbh->prepare("select count(*) from message") or die "FATAL: Could not prepare SQL statement";
 	my $valid = $sth->execute();
 	$sth->finish();
-	die "FATAL: No message table found. Ensure you have run db_migrate.pl --schema BlissMessaging --version 0.01\n" unless defined $valid;
+	die "FATAL: No message table found. Ensure you have run db_migrate.pl --schema ECPrivateMessaging --version 0.01\n" unless defined $valid;
 
 	my $subcmd = shift(@ARGV);
 	die "FATAL: No subcommand specified, try --help for more info\n" unless defined $subcmd;
