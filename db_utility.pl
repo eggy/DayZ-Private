@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Bliss database manipulation utility
+# ECPrivate database manipulation utility
 # by ayan4m1
 
 use strict;
