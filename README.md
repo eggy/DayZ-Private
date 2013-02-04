@@ -8,7 +8,7 @@ Prerequisites
 =============
 
  - Windows (tested with 7 and Server 2008)
- - A working ArmA 2 Combined Ops dedicated server (Steam users must merge ArmA2 and ArmA2 OA directories) with beta patch **99113** installed (http://www.arma2.com/beta-patch.php)
+ - A working ArmA 2 Combined Ops dedicated server (Steam users must merge ArmA2 and ArmA2 OA directories) with beta patch **101480** installed (http://www.arma2.com/beta-patch.php)
  - Microsoft Visual C++ 2010 SP1 x86 Redistributable (http://www.microsoft.com/en-us/download/details.aspx?id=8328)
  - MySQL Server 5.x with TCP/IP Networking enabled **NOTE:** You **must** use the official MySQL installer, not XAMPP (http://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.27-win32.msi/from/http://cdn.mysql.com)
  - The decimal separator on your server MUST BE a period. If it is a comma, vehicle spawning (at least) will not work correctly. **NOTE:** If you use FireDaemon to start your server, you must re-create the service if you change the comma separator in Windows.
@@ -25,8 +25,6 @@ Directories
 
 Installation
 ============
-
-**NOTE**: Do **NOT** create GitHub issues for support requests. They are **ONLY** to be created if you have a repeatable bug that you can provide copious debugging information about. See the end of the README for ways to get support.
 
 **NOTE**: The importance of following each of these steps correctly and in order cannot be understated. 
 
@@ -100,12 +98,12 @@ Installation
 Upgrading
 =========
 
-**EXTREMELY IMPORTANT:** If you are migrating from **ANY** previous version of ECPrivate you will lose vehicles during the upgrade to schema 0.27.
+**EXTREMELY IMPORTANT:** If you are migrating from **ANY** previous version of Bliss you will lose vehicles during the upgrade to schema 0.27.
 
 Depending on what has changed since you deployed your server, you may need to perform one or more steps to do a clean upgrade to the latest code. Look for the following in the commit log (specifically, the files that were changed) when you update to the latest version of the repository:
 
 If you see that SQL files or `db_migrate.pl` have changed, then you **must** run `db_migrate.pl` (with appropriate options, run it with `--help` for more information) to upgrade your database to the latest version.
-If SQF files (game script) has changed, then you **must** run `build.pl` and copy the `**Repository**\\deploy\\@bliss_<id>.<world>\\` directory into **ArmA2**\\ (where `<id>` and `<world>` are the values you specified when running build.pl).
+If SQF files (game script) has changed, then you **must** run `build.pl` and copy the `**Repository**\\deploy\\@ecprivate_<id>.<world>\\` directory into **ArmA2**\\ (where `<id>` and `<world>` are the values you specified when running build.pl).
 If configuration files and BattlEye anti-cheat files have changed in **Repository**\\deploy\\, you will need to backup and overwrite your existing versions of these files. Take care to change any default server names, passwords or similar back to their customized values after copying the new versions into your **ArmA2** directory.
 If you receive an error like `Cannot locate Some::Module.pm in @INC` when running a Perl script after an upgrade, run `setup_perl.bat` and then try the Perl script again.
 
@@ -180,7 +178,7 @@ Buildings
 
 You may optionally enable a system that reads structure information from the database and spawns a set of static structures on the map on each server start. To do so, follow these steps:
 
-1. Run `perl db_migrate.pl --schema BlissBuildings --version 0.01`. Be sure to include any parameters needed for your specific database passwords / configuration.  
+1. Run `perl db_migrate.pl --schema ECPrivateBuildings --version 0.01`. Be sure to include any parameters needed for your specific database passwords / configuration.  
 2. When building ECPrivate, you must add `--with-buildings` to your arguments, for example `perl build.pl --with-buildings`.  
 3. You must manually insert any building class names you wish to use into the building table and then insert the spawn coordinates / associated building IDs into the instance_building table.  
 
@@ -191,7 +189,7 @@ Custom Inventory
 
 You may optionally enable a system that allows you to define custom spawn loadouts for individuals and/or group. To do so, follow these steps:
 
-1. Run `perl db_migrate.pl --schema BlissInvCust --version 0.02`. Be sure to include any parameters needed for your specific database passwords / configuration.  
+1. Run `perl db_migrate.pl --schema ECPrivateInvCust --version 0.02`. Be sure to include any parameters needed for your specific database passwords / configuration.  
 2. When building ECPrivate, you must add `--with-invcust` to your arguments, for example `perl build.pl --with-invcust`.  
 
 There are two tables which you must insert values into to use this feature. The `cust_loadout` table defines unique sets of inventory/backpack to give the player(s) on spawn. The `cust_loadout_profile` table then ties these cust_loadout rows to player profile IDs. You can associate multiple profile IDs to a single loadout with this relationship.
@@ -229,7 +227,7 @@ Common Issues
 	select * from survivor;
 
 **Problem**: Server crashes when the first player connects  
-**Solution**: Ensure that you have `HiveEXT.dll` in your **ArmA2**\\@bliss_\<instance\>.\<world\> directory and that you have a valid and well-formed **Config**\\HiveExt.ini. Also ensure that you have tried both `localhost` and `127.0.0.1` as the hostname if you run MySQL on the same server as ECPrivate.
+**Solution**: Ensure that you have `HiveEXT.dll` in your **ArmA2**\\@ecprivate_\<instance\>.\<world\> directory and that you have a valid and well-formed **Config**\\HiveExt.ini. Also ensure that you have tried both `localhost` and `127.0.0.1` as the hostname if you run MySQL on the same server as ECPrivate.
 
 **Problem**: Server not listed on GameSpy in-game server list or third-party server lists  
 **Solution**: Ensure the game ports (default 2302 - 2305 UDP) are forwarded properly and that the GameSpy master server is up and running.  
