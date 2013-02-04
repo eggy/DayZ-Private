@@ -1,5 +1,5 @@
-deploy
-tmp
-util/DBIx-Migration-Directories-0.11/blib/
-util/DBIx-Transaction-1.100/blib/
-util/File-DirCompare-0.6/blib/
+/deploy
+/tmp
+/util/DBIx-Migration-Directories-0.11/blib/
+/util/DBIx-Transaction-1.100/blib/
+/util/File-DirCompare-0.6/blib/
