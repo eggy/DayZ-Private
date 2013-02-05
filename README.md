@@ -174,7 +174,7 @@ Messaging / Scheduler
 
 You may optionally enable an in-game announcement system for ECPrivate. To do so, follow these steps:
 
-1. Run `perl db_migrate.pl --schema BlissMessaging --version 0.01`. Be sure to include any parameters needed for your specific database passwords / configuration.  
+1. Run `perl db_migrate.pl --schema ECPrivateMessaging --version 0.01`. Be sure to include any parameters needed for your specific database passwords / configuration.  
 2. When building ECPrivate, you must add `--with-messaging` to your arguments, for example `perl build.pl --with-messaging`.  
 3. Use `perl db_utility.pl --help` to learn how to use the `messages` command to manage your messages without any direct database interaction.  
 
