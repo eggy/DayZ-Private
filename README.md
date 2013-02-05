@@ -4,6 +4,12 @@ DayZ Private Server
 This is a private server project for DayZ which would not be possible without the work of Rocket, ayan4m1 and Guru Abdul.   
 **NOTE**: No support is implied or offered for pirated copies of ArmA 2.
 
+Users Migrating from Bliss
+==========================
+Users migrating from Bliss using an existing database will need to run the following against the database. 
+
+db_migrate.pl --name chernarus --schema ECPrivateMigrate --version 0.01
+
 Prerequisites
 =============
 
